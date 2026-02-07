@@ -84,6 +84,22 @@ body {
     cursor: pointer;
 }
 
+/* 1. This makes the left container stretch to match the right panel's height */
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch; /* This is key! It stretches the card vertically */
+}
+
+/* 2. This pushes the canvas to the bottom of that stretched card */
+#c {
+    margin-top: auto; 
+    image-rendering: pixelated;
+    border-radius: 10px;
+    border: 1px solid #333;
+    display: block;
+}
+
 canvas {
     image-rendering: pixelated;
     border-radius: 10px;
