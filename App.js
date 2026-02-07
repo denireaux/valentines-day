@@ -46,6 +46,14 @@ class App {
         document.querySelectorAll("[data-brush]").forEach(btn => {
             btn.onclick = () => this.brush = parseInt(btn.dataset.brush);
         });
+
+        // Change the banner when she stamps the message
+        const stampBtn = document.getElementById("stamp");
+        stampBtn.addEventListener('click', () => {
+            const bannerText = document.querySelector(".valentine-banner h1");
+            bannerText.textContent = "I knew you'd say yes! ❤️";
+            bannerText.style.color = "#ff85a1";
+        });
     }
 
     setupPhotoEvents() {
