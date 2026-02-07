@@ -15,7 +15,6 @@ class App {
         this.mouseDown = false;
 
         this.init();
-
         this.setupPhotoEvents();
     }
 
@@ -39,20 +38,24 @@ class App {
             this.running = !this.running;
             e.target.textContent = this.running ? "Pause" : "Play";
         };
-        document.getElementById("clear").onclick = () => this.sim.grid.fill(0);
-        document.getElementById("stamp").onclick = () => this.text.stampCentered(document.getElementById("msg").value);
-        document.getElementById("stampClear").onclick = () => { this.sim.grid.fill(0); this.text.stampCentered(document.getElementById("msg").value); };
-        
-        document.querySelectorAll("[data-brush]").forEach(btn => {
-            btn.onclick = () => this.brush = parseInt(btn.dataset.brush);
-        });
 
-        // Change the banner when she stamps the message
-        const stampBtn = document.getElementById("stamp");
-        stampBtn.addEventListener('click', () => {
+        document.getElementById("clear").onclick = () => this.sim.grid.fill(0);
+
+        document.getElementById("stamp").onclick = () => {
+            this.text.stampCentered(document.getElementById("msg").value);
+            // Change banner text on click
             const bannerText = document.querySelector(".valentine-banner h1");
             bannerText.textContent = "I knew you'd say yes! ❤️";
             bannerText.style.color = "#ff85a1";
+        };
+
+        document.getElementById("stampClear").onclick = () => { 
+            this.sim.grid.fill(0); 
+            this.text.stampCentered(document.getElementById("msg").value); 
+        };
+        
+        document.querySelectorAll("[data-brush]").forEach(btn => {
+            btn.onclick = () => this.brush = parseInt(btn.dataset.brush);
         });
     }
 
@@ -61,29 +64,22 @@ class App {
         const modalImg = document.getElementById("modal-img");
         const closeBtn = document.querySelector(".modal .close");
 
-        // This is your "Action Listener" for the images
         document.querySelectorAll(".expandable").forEach(img => {
             img.onclick = () => {
                 modal.style.display = "flex";
                 modalImg.src = img.src;
                 
-                // Java-style random spawn logic
+                // Spawn a heart in the sand when a photo is clicked!
                 const randomX = Math.floor(Math.random() * (W - 20)) + 10;
-                const randomY = Math.floor(Math.random() * 50) + 20; // Spawn near top
-                
-                this.sim.spawnHeart(randomX, randomY, CELL.SAND);
+                const randomY = Math.floor(Math.random() * 50) + 20; 
+                if(this.sim.spawnHeart) {
+                    this.sim.spawnHeart(randomX, randomY, CELL.SAND);
+                }
             };
         });
 
-        // "Action Listener" for the close button
-        closeBtn.onclick = () => {
-            modal.style.display = "none";
-        };
-
-        // "Action Listener" to close when clicking the dark background
-        modal.onclick = (e) => {
-            if (e.target === modal) modal.style.display = "none";
-        };
+        closeBtn.onclick = () => modal.style.display = "none";
+        modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
     }
 
     paint(e) {

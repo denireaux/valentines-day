@@ -9,15 +9,50 @@ body {
     min-height: 100vh;
 }
 
-/* 1. Ensure the main container allows children to fill the height */
 .app {
     display: flex;
-    gap: 16px;
-    align-items: stretch; /* This forces both columns to be equal height */
-    width: fit-content;   /* Keeps it tight to your content */
-    margin: auto;         /* Centers the whole thing on the screen */
+    gap: 20px;
+    align-items: stretch; /* Makes left and right columns equal height */
+    width: fit-content;
+    height: 90vh; /* Limits total height to prevent scrolling */
 }
 
+/* --- Left Column Logic --- */
+.left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes banner to top, canvas to bottom */
+    width: 900px; /* (W:300 * SCALE:3) */
+}
+
+.valentine-banner {
+    background: #161616;
+    border: 1px dashed #ff4d6d;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+}
+
+.valentine-banner h1 {
+    margin: 0;
+    color: #ff4d6d;
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);
+}
+
+.heart-row { font-size: 1.2rem; margin-top: 10px; letter-spacing: 10px; }
+
+#c {
+    image-rendering: pixelated;
+    border-radius: 10px;
+    border: 1px solid #333;
+    display: block;
+    width: 900px;
+    height: 600px;
+}
+
+/* --- Right Panel Logic --- */
 .panel {
     width: 320px;
     display: flex;
@@ -33,15 +68,14 @@ body {
 }
 
 .dedication-card {
-    margin-top: auto; /* Java Dev Victory: This pushes it to the bottom */
+    margin-top: auto; /* Pushes dedication to the bottom */
     border-color: #442222;
 }
 
-.row { display: flex; gap: 8px; align-items: center; }
-
+/* --- Interactive Elements --- */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2x2 for your 4 photos */
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
 }
 
@@ -51,108 +85,26 @@ body {
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
-    transition: filter 0.2s, transform 0.2s;
+    transition: transform 0.2s;
 }
 
-.photo-grid img:hover {
-    filter: brightness(1.2);
-    transform: scale(1.02);
-}
+.photo-grid img:hover { transform: scale(1.05); }
 
-/* The Modal (Pop-up) */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.9);
     align-items: center;
     justify-content: center;
 }
 
-.modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
+.modal img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+.modal .close { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
 
-.modal .close {
-    position: absolute;
-    top: 20px; right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-.canvas-container.card {
-    display: flex;
-    flex-direction: column;
-    align-self: stretch; 
-    background: transparent;
-    border: none;
-    padding: 0;
-    box-shadow: none;
-}
-
-/* 3. The Canvas itself */
-#c {
-    margin-top: auto; 
-    image-rendering: pixelated;
-    border-radius: 10px;
-    border: 1px solid #333;
-    display: block;
-    /* This ensures the canvas width doesn't shrink */
-    width: 900px; /* (W:300 * SCALE:3) */
-    height: 600px; /* (H:200 * SCALE:3) */
-}
-
-.valentine-banner {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(to bottom, #2a1014, #161616); /* Subtle deep red fade */
-    border-radius: 10px;
-    border: 1px dashed #ff4d6d; /* Classic "cut-out" valentine look */
-    margin-bottom: 20px;
-}
-
-.valentine-banner h1 {
-    font-family: 'Georgia', serif; /* A bit more romantic/classic */
-    color: #ff4d6d;
-    font-size: 2.2rem;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
-}
-
-.heart-row {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    letter-spacing: 10px;
-}
-
-canvas {
-    image-rendering: pixelated;
-    border-radius: 10px;
-    border: 1px solid #333;
-    display: block;
-}
-
-input[type="text"] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    background: #101010;
-    color: #ddd;
-}
-
-button {
-    cursor: pointer;
-    background: #222;
-    color: #ddd;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 8px 10px;
-}
+.row { display: flex; gap: 8px; align-items: center; }
+input[type="text"] { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #101010; color: #ddd; box-sizing: border-box; }
+button { cursor: pointer; background: #222; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 8px 10px; }
+button:hover { background: #333; }
