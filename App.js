@@ -15,6 +15,8 @@ class App {
         this.mouseDown = false;
 
         this.init();
+
+        this.setupPhotoEvents();
     }
 
     init() {
@@ -44,6 +46,30 @@ class App {
         document.querySelectorAll("[data-brush]").forEach(btn => {
             btn.onclick = () => this.brush = parseInt(btn.dataset.brush);
         });
+    }
+
+    setupPhotoEvents() {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const closeBtn = document.querySelector(".modal .close");
+
+        // This is your "Action Listener" for the images
+        document.querySelectorAll(".expandable").forEach(img => {
+            img.onclick = () => {
+                modal.style.display = "flex";
+                modalImg.src = img.src;
+            };
+        });
+
+        // "Action Listener" for the close button
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        // "Action Listener" to close when clicking the dark background
+        modal.onclick = (e) => {
+            if (e.target === modal) modal.style.display = "none";
+        };
     }
 
     paint(e) {
