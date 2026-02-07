@@ -88,19 +88,35 @@ body {
     border-color: #442222;
 }
 
-/* Interactive elements */
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-}
-
+/* The interactive state for the gallery */
 .photo-grid img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
+    border: 1px solid transparent;
+    
+    /* Smooth transition for the hover effects */
+    transition: 
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+        filter 0.2s ease, 
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* THE HOVER ELEMENT: This brings back the interactive feel */
+.photo-grid img:hover {
+    transform: scale(1.08); /* Pop out slightly */
+    filter: brightness(1.2) contrast(1.1); /* Light up */
+    border-color: #ff4d6d; /* Romantic pink border on hover */
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); /* Glow effect */
+    z-index: 10; /* Ensure it pops over the neighbors */
+}
+
+/* Optional: Subtle pulse animation when hovering */
+.photo-grid img:active {
+    transform: scale(0.95); /* Squish effect when clicked */
 }
 
 .modal {
