@@ -21,9 +21,7 @@ class App {
     init() {
         this.canvas.width = W;
         this.canvas.height = H;
-        this.canvas.style.width = (W * SCALE) + "px";
-        this.canvas.style.height = (H * SCALE) + "px";
-
+        // Keep CSS width/height for display and internal resolution for logic
         this.setupEvents();
         this.text.stampCentered("Always Falling For You Susan");
         this.loop();
@@ -43,15 +41,8 @@ class App {
 
         document.getElementById("stamp").onclick = () => {
             this.text.stampCentered(document.getElementById("msg").value);
-            // Change banner text on click
-            const bannerText = document.querySelector(".valentine-banner h1");
-            bannerText.textContent = "I knew you'd say yes! ❤️";
-            bannerText.style.color = "#ff85a1";
-        };
-
-        document.getElementById("stampClear").onclick = () => { 
-            this.sim.grid.fill(0); 
-            this.text.stampCentered(document.getElementById("msg").value); 
+            const bannerH1 = document.querySelector(".valentine-banner h1");
+            bannerH1.textContent = "I knew you'd say yes! ❤️";
         };
         
         document.querySelectorAll("[data-brush]").forEach(btn => {
@@ -62,24 +53,14 @@ class App {
     setupPhotoEvents() {
         const modal = document.getElementById("modal");
         const modalImg = document.getElementById("modal-img");
-        const closeBtn = document.querySelector(".modal .close");
-
         document.querySelectorAll(".expandable").forEach(img => {
             img.onclick = () => {
                 modal.style.display = "flex";
                 modalImg.src = img.src;
-                
-                // Spawn a heart in the sand when a photo is clicked!
-                const randomX = Math.floor(Math.random() * (W - 20)) + 10;
-                const randomY = Math.floor(Math.random() * 50) + 20; 
-                if(this.sim.spawnHeart) {
-                    this.sim.spawnHeart(randomX, randomY, CELL.SAND);
-                }
+                // Add heart spawn here if you have the sim.spawnHeart method!
             };
         });
-
-        closeBtn.onclick = () => modal.style.display = "none";
-        modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+        modal.onclick = () => modal.style.display = "none";
     }
 
     paint(e) {
@@ -95,7 +76,6 @@ class App {
 
     loop = () => {
         if (this.running) this.sim.step();
-        
         const pixels = this.img.data;
         for (let i = 0; i < this.sim.grid.length; i++) {
             const color = PALETTE[this.sim.grid[i]];

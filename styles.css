@@ -11,25 +11,25 @@ body {
 
 .app {
     display: flex;
-    gap: 20px;
-    align-items: stretch; /* Makes left and right columns equal height */
+    gap: 16px;
+    align-items: stretch; /* Forces left column height to match right column */
     width: fit-content;
-    height: 90vh; /* Limits total height to prevent scrolling */
+    height: 680px; /* Aligns with panel height roughly */
 }
 
-/* --- Left Column Logic --- */
+/* --- Left Column Fix --- */
 .left-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes banner to top, canvas to bottom */
-    width: 900px; /* (W:300 * SCALE:3) */
+    justify-content: space-between; /* Pushes banner UP and canvas DOWN */
+    width: 900px;
 }
 
 .valentine-banner {
     background: #161616;
     border: 1px dashed #ff4d6d;
     border-radius: 10px;
-    padding: 24px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -37,22 +37,23 @@ body {
     margin: 0;
     color: #ff4d6d;
     font-family: 'Georgia', serif;
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);
+    font-size: 2.2rem;
 }
 
 .heart-row { font-size: 1.2rem; margin-top: 10px; letter-spacing: 10px; }
+
+.canvas-area { line-height: 0; }
 
 #c {
     image-rendering: pixelated;
     border-radius: 10px;
     border: 1px solid #333;
     display: block;
-    width: 900px;
-    height: 600px;
+    width: 900px; 
+    height: 480px; /* Adjust height if needed to fill the gap */
 }
 
-/* --- Right Panel Logic --- */
+/* --- Right Panel --- */
 .panel {
     width: 320px;
     display: flex;
@@ -68,11 +69,10 @@ body {
 }
 
 .dedication-card {
-    margin-top: auto; /* Pushes dedication to the bottom */
+    margin-top: auto;
     border-color: #442222;
 }
 
-/* --- Interactive Elements --- */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -85,10 +85,7 @@ body {
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
-
-.photo-grid img:hover { transform: scale(1.05); }
 
 .modal {
     display: none;
@@ -102,9 +99,7 @@ body {
 }
 
 .modal img { max-width: 90%; max-height: 90%; border-radius: 10px; }
-.modal .close { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
 
 .row { display: flex; gap: 8px; align-items: center; }
-input[type="text"] { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #101010; color: #ddd; box-sizing: border-box; }
+input[type="text"] { width: 100%; box-sizing: border-box; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #101010; color: #ddd; }
 button { cursor: pointer; background: #222; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 8px 10px; }
-button:hover { background: #333; }
