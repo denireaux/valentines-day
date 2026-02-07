@@ -32,12 +32,13 @@ body {
     width: 900px; 
     /* Remove any background/border here so the "void" is invisible */
     background: transparent; 
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 .valentine-banner {
     flex: 0 0 auto; /* Ensures it doesn't stretch vertically */
     background: #161616;
-    border: 1px dashed #ff4d6d;
+    /* border: 1px dashed #ff4d6d; */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
