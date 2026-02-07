@@ -84,19 +84,26 @@ body {
     cursor: pointer;
 }
 
-/* 1. This makes the left container stretch to match the right panel's height */
-.canvas-container {
+/* 1. Neutralize the 'card' look for the canvas side */
+.canvas-container.card {
     display: flex;
     flex-direction: column;
-    align-self: stretch; /* This is key! It stretches the card vertically */
+    align-self: stretch; /* Match right panel height */
+    
+    background: transparent; /* Remove the grey background */
+    border: none;            /* Remove the border */
+    padding: 0;             /* Remove padding so alignment is pixel-perfect */
 }
 
-/* 2. This pushes the canvas to the bottom of that stretched card */
+/* 2. The 'Gravity' logic */
 #c {
-    margin-top: auto; 
+    margin-top: auto;        /* Pushes it to the bottom of the stretched container */
+    margin-left: auto;       /* Optional: centers it horizontally if there's extra width */
+    margin-right: auto;
+    
     image-rendering: pixelated;
     border-radius: 10px;
-    border: 1px solid #333;
+    border: 1px solid #333; /* The border stays on the canvas itself */
     display: block;
 }
 
