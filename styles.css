@@ -14,9 +14,12 @@ body {
 .app {
     display: flex;
     gap: 20px;
-    align-items: stretch; /* Keeps right and left columns same height */
+    align-items: stretch;
     width: fit-content;
-    padding: 20px;
+    padding: 30px;
+    /* Optional: adds a soft white glow behind the whole app to separate it from the pink */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
 }
 
 /* --- THE LEFT COLUMN FIX --- */
