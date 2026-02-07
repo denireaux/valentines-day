@@ -1,4 +1,4 @@
-/* General Reset and Layout */
+/* Core Page Setup */
 body {
     margin: 0;
     background: #111;
@@ -8,27 +8,29 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden; /* Prevents scrollbars from ruining the layout */
 }
 
 .app {
     display: flex;
     gap: 20px;
-    align-items: stretch; /* Forces left column height to match the right panel */
+    align-items: stretch; /* Keeps right and left columns same height */
     width: fit-content;
-    height: 85vh; /* Sets a fixed height for the whole app to align properly */
+    padding: 20px;
 }
 
-/* --- Left Column: Banner & Canvas --- */
+/* --- THE LEFT COLUMN FIX --- */
 .left-col {
     display: flex;
     flex-direction: column;
-    /* Pushes Banner to top, Canvas to bottom, removes middle gap */
+    /* This pushes banner to the absolute top and canvas to absolute bottom */
     justify-content: space-between; 
-    width: 900px; /* Matches W:300 * SCALE:3 */
+    width: 900px; 
+    /* Remove any background/border here so the "void" is invisible */
+    background: transparent; 
 }
 
 .valentine-banner {
+    flex: 0 0 auto; /* Ensures it doesn't stretch vertically */
     background: #161616;
     border: 1px dashed #ff4d6d;
     border-radius: 10px;
@@ -51,8 +53,10 @@ body {
     letter-spacing: 10px;
 }
 
+/* This is the container for the canvas */
 .canvas-area {
-    line-height: 0; /* Prevents sub-pixel ghost gaps below the canvas */
+    flex: 0 0 auto; /* Ensures it stays at its exact height at the bottom */
+    line-height: 0;
 }
 
 #c {
@@ -61,10 +65,10 @@ body {
     border: 1px solid #333;
     display: block;
     width: 900px; 
-    height: 500px; /* Adjust this to make the play area taller or shorter */
+    height: 600px; /* Set this to your preferred height */
 }
 
-/* --- Right Column: The Panel --- */
+/* --- RIGHT PANEL --- */
 .panel {
     width: 320px;
     display: flex;
@@ -80,17 +84,11 @@ body {
 }
 
 .dedication-card {
-    margin-top: auto; /* Pushes the 'I love you' card to the very bottom */
+    margin-top: auto; /* Pushes the signature to the bottom of the right panel */
     border-color: #442222;
 }
 
-.row { 
-    display: flex; 
-    gap: 8px; 
-    align-items: center; 
-}
-
-/* Photo Gallery Grid */
+/* Interactive elements */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -103,76 +101,22 @@ body {
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
 }
 
-.photo-grid img:hover {
-    transform: scale(1.03);
-    filter: brightness(1.2);
-}
-
-/* Modal / Lightbox */
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.9);
     align-items: center;
     justify-content: center;
 }
 
-.modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
+.modal img { max-width: 90%; max-height: 90%; border-radius: 10px; }
 
-.modal .close {
-    position: absolute;
-    top: 20px; 
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-/* Form Elements */
-input[type="text"] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    background: #101010;
-    color: #ddd;
-    outline: none;
-}
-
-input[type="text"]:focus {
-    border-color: #ff4d6d;
-}
-
-button {
-    cursor: pointer;
-    background: #222;
-    color: #ddd;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 8px 12px;
-    transition: background 0.2s;
-}
-
-button:hover {
-    background: #333;
-    border-color: #444;
-}
-
-#toggle:hover {
-    background: #2a1a1a;
-    border-color: #633;
-}
+/* Utilities */
+.row { display: flex; gap: 8px; align-items: center; }
+input[type="text"] { width: 100%; box-sizing: border-box; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #101010; color: #ddd; }
+button { cursor: pointer; background: #222; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 8px 10px; }
