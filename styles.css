@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    background: #111;
+    color: #ddd;
+    font-family: system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+    max-height: 90vh;
+}
+
+.panel {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.dedication-card {
+    margin-top: auto; /* Java Dev Victory: This pushes it to the bottom */
+    border-color: #442222;
+}
+
+.row { display: flex; gap: 8px; align-items: center; }
+
+canvas {
+    image-rendering: pixelated;
+    border-radius: 10px;
+    border: 1px solid #333;
+    display: block;
+}
+
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #101010;
+    color: #ddd;
+}
+
+button {
+    cursor: pointer;
+    background: #222;
+    color: #ddd;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px 10px;
+}

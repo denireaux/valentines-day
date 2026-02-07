@@ -1,160 +1,51 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
-    <title>Falling Sand</title>
-
-    <style>
-      body {
-        margin: 0;
-        background: #111;
-        color: #ddd;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-        height: 100vh;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .app {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      .panel {
-        width: 320px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .card {
-        background: #161616;
-        border: 1px solid #2a2a2a;
-        border-radius: 10px;
-        padding: 12px;
-        box-shadow: 0 0 0 1px rgba(255,255,255,0.02),
-                    0 12px 30px rgba(0,0,0,0.4);
-      }
-
-      .row {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      button {
-        cursor: pointer;
-        background: #222;
-        color: #ddd;
-        border: 1px solid #333;
-        border-radius: 8px;
-        padding: 8px 10px;
-      }
-
-      button:hover {
-        border-color: #555;
-      }
-
-      input[type="text"] {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #333;
-        background: #101010;
-        color: #ddd;
-        outline: none;
-      }
-
-      canvas {
-        image-rendering: pixelated;
-        border-radius: 10px;
-        border: 1px solid #333;
-        display: block;
-      }
-
-      .hint {
-        font-size: 12px;
-        color: #aaa;
-        line-height: 1.3;
-      }
-
-      #dedication p {
-        margin: 0 0 8px 0;
-        line-height: 1.5;
-        color: #cfcfcf;
-      }
-    </style>
-  </head>
-
-  <body>
+    <title>Falling Sand Valentine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <div class="app">
-      <!-- CANVAS -->
-      <div class="card">
-        <canvas id="c"></canvas>
-      </div>
-
-      <!-- RIGHT PANEL -->
-      <div class="panel">
-
-        <!-- CONTROLS -->
-        <div class="card">
-          <div class="row">
-            <button id="toggle">Pause</button>
-            <button id="clear">Clear</button>
-            <span id="info" style="margin-left:auto;">FPS: --</span>
-          </div>
-
-          <div class="row" style="margin-top:10px;">
-            <span>Brush:</span>
-            <button data-brush="1">Sand</button>
-            <button data-brush="2">Water</button>
-            <button data-brush="3">Stone</button>
-          </div>
+        <div class="card canvas-container">
+            <canvas id="c"></canvas>
         </div>
 
-        <!-- STONE MESSAGE -->
-        <div class="card">
-          <div style="margin-bottom:8px;">Message (stamped as stone)</div>
+        <div class="panel">
+            <div class="card">
+                <div class="row">
+                    <button id="toggle">Pause</button>
+                    <button id="clear">Clear</button>
+                    <span id="info" style="margin-left:auto;">FPS: --</span>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <span>Brush:</span>
+                    <button data-brush="1">Sand</button>
+                    <button data-brush="2">Water</button>
+                    <button data-brush="3">Stone</button>
+                </div>
+            </div>
 
-          <input
-            id="msg"
-            type="text"
-            value="Always Falling For You Susan"
-          />
+            <div class="card">
+                <div style="margin-bottom:8px;">Message (stamped as stone)</div>
+                <input id="msg" type="text" value="Always Falling For You Susan" />
+                <div class="row" style="margin-top:10px;">
+                    <button id="stamp">Stamp</button>
+                    <button id="stampClear">Clear & Stamp</button>
+                </div>
+            </div>
 
-          <div class="row" style="margin-top:10px;">
-            <button id="stamp">Stamp</button>
-            <button id="stampClear">Clear & Stamp</button>
-          </div>
-
-          <div class="hint" style="margin-top:10px;">
-            (Click and drag in the box to the left)
-          </div>
+            <div class="card dedication-card">
+                <div id="dedication">
+                    <p>In the morning. In the evening. At night.</p>
+                    <p>Wherever I am, I bring you with me.</p>
+                    <p>I love you.</p>
+                    <p>Happy Valentines Day, doll</p>
+                    <p style="font-size: 10px; opacity: 0.5;">(Properly aligned at the bottom.)</p>
+                </div>
+            </div>
         </div>
-
-        <!-- ALL I SEE IS YOU! -->
-        <div class="card">
-          <div style="margin-bottom:8px;">All I see is you.</div>
-
-          <div id="dedication">
-            <p>In the morning. In the evening. At night.</p>
-            <p>Wherever I am, I bring you with me, even if I'm not with you physically.</p>
-            <p>I love you.</p>
-            <p>I love you.</p>
-            <p>I. Love. You.</p>
-            <p>Happy Valentines Day, doll</p>
-            <p>(I'm not a frontend engineer and therefore can't get this shit aligned at the bottom.)</p>
-          </div>
-        </div>
-
-      </div>
     </div>
-
-    <script src="main.js"></script>
-  </body>
+    <script type="module" src="./App.js"></script>
+</body>
 </html>
