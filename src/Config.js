@@ -1,5 +1,5 @@
 export const W = 300;
-export const H = 200;
+export const H = 300;
 export const SCALE = 3;
 
 export const CELL = Object.freeze({
