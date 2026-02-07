@@ -86,17 +86,14 @@ body {
     cursor: pointer;
 }
 
-/* 2. Fix the left container so it's a transparent "Ghost" container */
 .canvas-container.card {
     display: flex;
     flex-direction: column;
     align-self: stretch; 
-    
-    /* Remove background and border so the canvas is the only visible thing */
-    background: transparent; 
-    border: none;            
-    padding: 0;             
-    box-shadow: none;        /* Ensure no ghost shadows appear */
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
 }
 
 /* 3. The Canvas itself */
@@ -109,6 +106,29 @@ body {
     /* This ensures the canvas width doesn't shrink */
     width: 900px; /* (W:300 * SCALE:3) */
     height: 600px; /* (H:200 * SCALE:3) */
+}
+
+.valentine-banner {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, #2a1014, #161616); /* Subtle deep red fade */
+    border-radius: 10px;
+    border: 1px dashed #ff4d6d; /* Classic "cut-out" valentine look */
+    margin-bottom: 20px;
+}
+
+.valentine-banner h1 {
+    font-family: 'Georgia', serif; /* A bit more romantic/classic */
+    color: #ff4d6d;
+    font-size: 2.2rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
+}
+
+.heart-row {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 10px;
 }
 
 canvas {
