@@ -2,7 +2,7 @@
 body {
     margin: 0;
     /* This is a very soft, "blush" pink */
-    background-color: #fff0f5; 
+    background-color: #eaaec2; 
     color: #333; /* Darkening the base text color for better contrast on light pink */
     font-family: system-ui, sans-serif;
     display: flex;
