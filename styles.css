@@ -111,14 +111,13 @@ body {
                 border-color 0.3s ease;
 }
 
-/* 2. THE FIX: Scale up, add a glow, and lift the z-index */
-.photo-grid img:hover {
-    position: relative; /* Allows z-index to work */
-    z-index: 5; 
-    transform: scale(1.15); /* Increased scale so it's very obvious */
-    border-color: #ff4d6d;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 77, 109, 0.3);
-    filter: brightness(1.1);
+.app .photo-grid img:hover {
+    position: relative !important;
+    z-index: 9999 !important;
+    transform: scale(1.2) !important; /* Made even bigger to test */
+    border-color: #ff4d6d !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    outline: none;
 }
 
 .photo-grid img:active {
