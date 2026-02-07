@@ -1,8 +1,9 @@
 /* Core Page Setup */
 body {
     margin: 0;
-    background: #111;
-    color: #ddd;
+    /* This is a very soft, "blush" pink */
+    background-color: #fff0f5; 
+    color: #333; /* Darkening the base text color for better contrast on light pink */
     font-family: system-ui, sans-serif;
     display: flex;
     justify-content: center;
