@@ -9,11 +9,13 @@ body {
     min-height: 100vh;
 }
 
+/* 1. Ensure the main container allows children to fill the height */
 .app {
     display: flex;
     gap: 16px;
-    align-items: stretch;
-    max-height: 90vh;
+    align-items: stretch; /* This forces both columns to be equal height */
+    width: fit-content;   /* Keeps it tight to your content */
+    margin: auto;         /* Centers the whole thing on the screen */
 }
 
 .panel {
@@ -84,27 +86,29 @@ body {
     cursor: pointer;
 }
 
-/* 1. Neutralize the 'card' look for the canvas side */
+/* 2. Fix the left container so it's a transparent "Ghost" container */
 .canvas-container.card {
     display: flex;
     flex-direction: column;
-    align-self: stretch; /* Match right panel height */
+    align-self: stretch; 
     
-    background: transparent; /* Remove the grey background */
-    border: none;            /* Remove the border */
-    padding: 0;             /* Remove padding so alignment is pixel-perfect */
+    /* Remove background and border so the canvas is the only visible thing */
+    background: transparent; 
+    border: none;            
+    padding: 0;             
+    box-shadow: none;        /* Ensure no ghost shadows appear */
 }
 
-/* 2. The 'Gravity' logic */
+/* 3. The Canvas itself */
 #c {
-    margin-top: auto;        /* Pushes it to the bottom of the stretched container */
-    margin-left: auto;       /* Optional: centers it horizontally if there's extra width */
-    margin-right: auto;
-    
+    margin-top: auto; 
     image-rendering: pixelated;
     border-radius: 10px;
-    border: 1px solid #333; /* The border stays on the canvas itself */
+    border: 1px solid #333;
     display: block;
+    /* This ensures the canvas width doesn't shrink */
+    width: 900px; /* (W:300 * SCALE:3) */
+    height: 600px; /* (H:200 * SCALE:3) */
 }
 
 canvas {
