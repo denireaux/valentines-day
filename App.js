@@ -58,6 +58,12 @@ class App {
             img.onclick = () => {
                 modal.style.display = "flex";
                 modalImg.src = img.src;
+                
+                // Java-style random spawn logic
+                const randomX = Math.floor(Math.random() * (W - 20)) + 10;
+                const randomY = Math.floor(Math.random() * 50) + 20; // Spawn near top
+                
+                this.sim.spawnHeart(randomX, randomY, CELL.SAND);
             };
         });
 
