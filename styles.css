@@ -1,3 +1,4 @@
+/* General Reset and Layout */
 body {
     margin: 0;
     background: #111;
@@ -7,22 +8,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden; /* Prevents scrollbars from ruining the layout */
 }
 
 .app {
     display: flex;
-    gap: 16px;
-    align-items: stretch; /* Forces left column height to match right column */
+    gap: 20px;
+    align-items: stretch; /* Forces left column height to match the right panel */
     width: fit-content;
-    height: 680px; /* Aligns with panel height roughly */
+    height: 85vh; /* Sets a fixed height for the whole app to align properly */
 }
 
-/* --- Left Column Fix --- */
+/* --- Left Column: Banner & Canvas --- */
 .left-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes banner UP and canvas DOWN */
-    width: 900px;
+    /* Pushes Banner to top, Canvas to bottom, removes middle gap */
+    justify-content: space-between; 
+    width: 900px; /* Matches W:300 * SCALE:3 */
 }
 
 .valentine-banner {
@@ -31,6 +34,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     text-align: center;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 .valentine-banner h1 {
@@ -38,11 +42,18 @@ body {
     color: #ff4d6d;
     font-family: 'Georgia', serif;
     font-size: 2.2rem;
+    text-shadow: 0 0 8px rgba(255, 77, 109, 0.4);
 }
 
-.heart-row { font-size: 1.2rem; margin-top: 10px; letter-spacing: 10px; }
+.heart-row {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 10px;
+}
 
-.canvas-area { line-height: 0; }
+.canvas-area {
+    line-height: 0; /* Prevents sub-pixel ghost gaps below the canvas */
+}
 
 #c {
     image-rendering: pixelated;
@@ -50,10 +61,10 @@ body {
     border: 1px solid #333;
     display: block;
     width: 900px; 
-    height: 480px; /* Adjust height if needed to fill the gap */
+    height: 500px; /* Adjust this to make the play area taller or shorter */
 }
 
-/* --- Right Panel --- */
+/* --- Right Column: The Panel --- */
 .panel {
     width: 320px;
     display: flex;
@@ -69,10 +80,17 @@ body {
 }
 
 .dedication-card {
-    margin-top: auto;
+    margin-top: auto; /* Pushes the 'I love you' card to the very bottom */
     border-color: #442222;
 }
 
+.row { 
+    display: flex; 
+    gap: 8px; 
+    align-items: center; 
+}
+
+/* Photo Gallery Grid */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -85,21 +103,76 @@ body {
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
 }
 
+.photo-grid img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.2);
+}
+
+/* Modal / Lightbox */
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
     background: rgba(0,0,0,0.9);
     align-items: center;
     justify-content: center;
 }
 
-.modal img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
 
-.row { display: flex; gap: 8px; align-items: center; }
-input[type="text"] { width: 100%; box-sizing: border-box; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #101010; color: #ddd; }
-button { cursor: pointer; background: #222; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 8px 10px; }
+.modal .close {
+    position: absolute;
+    top: 20px; 
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Form Elements */
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #101010;
+    color: #ddd;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #ff4d6d;
+}
+
+button {
+    cursor: pointer;
+    background: #222;
+    color: #ddd;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #333;
+    border-color: #444;
+}
+
+#toggle:hover {
+    background: #2a1a1a;
+    border-color: #633;
+}
