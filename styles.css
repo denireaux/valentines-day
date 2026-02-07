@@ -56,7 +56,6 @@ body {
     font-size: 1.2rem;
     margin-top: 10px;
     letter-spacing: 10px;
-    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 /* This is the container for the canvas */
