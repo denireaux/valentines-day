@@ -32,7 +32,6 @@ body {
     width: 900px; 
     /* Remove any background/border here so the "void" is invisible */
     background: transparent; 
-    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 .valentine-banner {
@@ -57,12 +56,14 @@ body {
     font-size: 1.2rem;
     margin-top: 10px;
     letter-spacing: 10px;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 /* This is the container for the canvas */
 .canvas-area {
     flex: 0 0 auto; /* Ensures it stays at its exact height at the bottom */
     line-height: 0;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 #c {
@@ -87,11 +88,13 @@ body {
     border: 1px solid #2a2a2a;
     border-radius: 10px;
     padding: 12px;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 .dedication-card {
     margin-top: auto; /* Pushes the signature to the bottom of the right panel */
     border-color: #442222;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 /* 1. Add padding to the grid so images have room to expand outward */
