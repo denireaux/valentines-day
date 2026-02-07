@@ -36,7 +36,7 @@ body {
 
 .valentine-banner {
     flex: 0 0 auto; /* Ensures it doesn't stretch vertically */
-    background: #161616;
+    background: #eaaec2;
     /* border: 1px dashed #ff4d6d; */
     border-radius: 10px;
     padding: 20px;
